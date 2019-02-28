@@ -14,9 +14,15 @@
 		<br/>
 		<div style="width: 500px;">
 			<p v-bind:align="datos">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus quis, nihil numquam minima, corporis ipsam! Cupiditate adipisci nemo voluptates vitae modi rerum quidem reiciendis repudiandae voluptatum facilis quis perferendis sapiente, omnis aliquam dicta, saepe culpa unde ipsam illo necessitatibus dolorum dolor, fuga quibusdam explicabo. Exercitationem aspernatur corporis, porro sed debitis.</p>
+			<!--De acuerdo al valor que tenga la variable
+				datos, será la forma en que el atributo de
+				la etiqueta P va a cambiar.
+				Si en el input se escribe center, justify, left o right
+				cambia su alineación en tiempo real
+			-->
 		</div>
 	</main>
-
+	
 	<script src="vueJS/vue.min.js"></script>
 	<script>
 		const app = new Vue({
