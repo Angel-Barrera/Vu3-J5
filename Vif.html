@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximun-scale=1, minimun-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>V-If</title>
+</head>
+<body>
+
+	<main id="app">
+		<input type="number" v-model="datos">
+		<!-- El input de tipo number, es un comboBox numerico
+			con v-model se controla la variable datos
+			De acuerdo al valor de la variable, se moestrara
+			o se ocultara determinado contenido
+		-->
+		<h1 v-if="datos == 1">El dia es muy nublado</h1>
+		<h1 v-else-if="datos == 2">El dia esta muy lluvioso</h1>
+		<h1 v-else>El dia esta muy soleado</h1>
+	</main>
+	<script src="vueJS/vue.min.js"></script>
+	<script>
+		const app = new Vue({
+			el:'#app',
+		    data:{
+		          datos: 0
+		    }
+		})
+	</script>
+
+</body>
+</html>
