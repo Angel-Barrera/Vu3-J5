@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximun-scale=1, minimun-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>V-for</title>
+</head>
+<body>
+
+	<main id="app">
+		<h1>Frutas favoritas</h1>
+		<ul>
+			<ol v-for="dato in datos">{{dato.id}} - {{dato.valor}}</ol>
+		</ul>
+		<br>
+
+		<select name="" id="" v-model="datos.id">
+			<!--Esto es un comboBox, se ira llenando conforme
+				se recorra el arreglo con la directiva v-for
+			-->
+			<option v-for="dato in datos" :value="dato.id"> {{dato.valor}} </option>
+		</select>
+		<br><br>
+
+		<input type="text" :value="datos.id">
+		<!-- De acuerdo a la seleccion en el comboBox
+			En el textbox se escribe el ID del elemento seleccionado
+		-->
+
+	</main>
+	<script src="vueJS/vue.min.js"></script>
+	<script>
+		const app = new Vue({
+			el:'#app',
+		    data:{
+		          datos:[
+		          	{valor:'Uvas', id:1},
+		          	{valor:'Manzanas', id:2},
+		          	{valor:'Sandias', id:3},
+		          	{valor:'Mangos', id:4}
+		          ]
+		    }
+		})
+	</script>
+
+</body>
+</html>

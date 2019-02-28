@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximun-scale=1, minimun-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>V-html</title>
+</head>
+<body>
+
+	<main id="app">
+		<h1 v-text="texto"></h1>
+		<div v-html="codHTML"></div>
+		
+	</main>
+	<script src="vueJS/vue.min.js"></script>
+	<script>
+		const app = new Vue({
+			el:'#app',
+		    data:{
+		          texto:' Soy texto inyectado con Vue',
+		          codHTML: '<h1><i>Soy un texto con codigo html </i></h1>'
+		    }
+		})
+	</script>
+
+</body>
+</html>
