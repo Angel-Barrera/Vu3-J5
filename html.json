@@ -1,0 +1,9 @@
+{
+	"hola":{							// Nombre del snippet
+		"prefix": "hello",				// Nombre de como sera llamado el snippet
+		"body": [						// Cuerpo de lineas de coidgo
+			"<h1>Hola</h1>"
+		],
+		"description": "hola con h1"	// Descricion del snippet
+	}
+}
