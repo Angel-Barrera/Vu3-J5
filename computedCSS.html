@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximun-scale=1, minimun-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Propiedades Computadas</title>
+    <style>
+      .femenino{
+        color: pink;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 25px;
+        font-weight: bolder;
+      }
+      .masculino{
+        color: blue;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 15px;
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <main id="app">
+      <h2>Escribe tu edad</h2>
+      <input type="number" v-model="edad"><br>
+      <div v-html="rangoEdad"></div><br>
+      <label :class="genero">{{concatenacion}}</label><br>
+      <input type="radio" v-model="gen" value="f">Femenino
+      <input type="radio" v-model="gen" value="m">Masculino
+      <br><br>
+      <p :style="estilo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In explicabo voluptate dolorum voluptatum, sequi sunt modi, beatae quod fugiat aliquam? Dolor illo accusantium, velit repellendus! Quidem iure assumenda molestias, aperiam a doloribus officia qui amet voluptas quo voluptatem ducimus dolor, libero maxime? Ut ea hic, assumenda accusamus quae odio quaerat voluptatum beatae repudiandae quis quas dolores eius recusandae, nihil voluptatibus aliquid, incidunt, non omnis. Eos illo veniam excepturi architecto nisi officia at perferendis. Cupiditate dolorum eveniet praesentium accusamus fugiat tempore, et maxime, quidem deleniti ullam. At veniam ab iure amet voluptatibus maiores esse. Voluptatum qui, debitis quis. Accusantium, debitis. Totam.</p>
+
+    </main>
+
+    <script src="vueJS/vue.min.js"></script>
+    <script>
+      const app = new Vue({
+        el:'#app',
+        data:{
+          edad: 0,
+          nombre: 'Angel',
+          apellidoP: 'Barrera',
+          ApellidoM: 'Galindo',
+          gen: 'f'
+        },
+        computed:{
+          rangoEdad: function(){
+            return this.edad >= 18 ? '<h1>Eres mayor de edad</h1>' : '<h2>Eres menor de edad</h2>';
+          },
+          concatenacion: function(){
+            return this.nombre + ' ' + this.apellidoP + ' ' + this.ApellidoM;
+          },
+          genero: function(){
+            return this.gen == 'f' ? 'femenino' : 'masculino';
+          },
+          estilo: function(){
+            return{
+              width:'300px',
+              fontSize:'20px',
+              color:'chocolate',
+              textAlign:'justify'
+            }
+          }
+        }
+      })
+    </script>
+
+  </body>
+</html>
