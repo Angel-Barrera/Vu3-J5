@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximun-scale=1, minimun-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Métodos</title>
+  </head>
+  <body>
+
+    <main id="app">
+      <h1>Calculadora</h1>
+      <input type="number" name="" v-model="v1" placeholder="valor 1">
+      <input type="number" name="" v-model="v2" placeholder="valor 2" @keyup="operacion">
+      <br><br>
+      <input type="radio" name="" v-model="ope" value="suma">Suma
+      <input type="radio" name="" v-model="ope" value="resta">Resta
+      <input type="radio" name="" v-model="ope" value="multi">Multiplicación
+      <input type="radio" name="" v-model="ope" value="div"> División
+      <br><br>
+      <button v-on:click="operacion">Calcular</button>
+      <br><br>
+      <label>{{res}}</label>
+      <br><br>
+      <button @click="saludo('Hola, como estás')">Saludo</button>
+      <br><br>
+      <input type="text" name="" @keyup.enter="saludo(dato)" placeholder="Evento con tecla">
+      <!-- Con el v-model se va recogiendo lo que el usuario
+        escriba, y con el v-on(@) lo manda al metodo del evento
+
+        las teclas que se puede utilizar en el evento 'keyup' son:
+        enter, tab, delete, esc, space
+        left, up, down, right
+       -->
+       <input type="text" name="" @keyup.shift.l="saludo(dato)" v-model="dato" placeholder="Evento con combinación">
+       <!-- Combinaciones de teclas:
+        ctrl, alt, shift, meta (windows xD o Home)
+        -->
+        <br><br><hr>
+        <h1>TodoList</h1>
+        <form @submit.prevent="addPerso">
+          <input type="text" name="" v-model="persona"><br>
+          <input type="submit" value="Agregar">
+        </form>
+        <br><br>
+        <ul>
+          <li v-for="per in personas">{{per}}</li>
+        </ul>
+
+    </main>
+
+    <script src="vueJS/vue.min.js"></script>
+    <script>
+      const app = new Vue({
+        el:'#app',
+        data:{
+          v1: 0, v2: 0, res: 0,
+          ope:'suma',
+          dato: '',
+          personas: ['María','Pedro','Luis'],
+          persona:''
+        },
+        methods:{
+          operacion:function(){
+            switch(this.ope){
+              case 'suma':
+                this.res = parseInt(this.v1) + parseInt(this.v2);
+              break;
+              case 'resta':
+                this.res = this.v1 - this.v2;
+              break;
+              case 'multi':
+                this.res = this.v1 * this.v2;
+              break;
+              case 'div':
+                this.res = this.v1 / this.v2;
+              break;
+            }
+          },
+          saludo:function(mensaje){
+            alert(mensaje)
+            /*if (event) {
+              alert("Evento ejecutado")
+            }*/
+          },
+          addPerso: function(){
+            if (this.persona != '') {
+              this.personas.push(this.persona)
+              // push agrega elementos al final
+              // unshift agrega elementos al principio
+              this.persona = '';
+            }
+          }
+        }
+      })
+    </script>
+
+  </body>
+</html>
