@@ -25,6 +25,36 @@
       <mis-pelis :lista="peliculas"></mis-pelis>
     </div>
 
+    <template id="tablaa">
+      <div>
+        <table>
+          <th>Nombre</th>
+          <th>Dirección</th>
+          <th>Télefono</th>
+          <tr v-for="dato in lista">
+            <td>{{dato.nombre}}</td>
+            <td>{{dato.direc}}</td>
+            <td>{{dato.tel}}</td>
+          </tr>
+        </table>
+      </div>
+    </template>
+
+    <script type="text/tem" id="tabla2">
+      <div>
+        <table>
+          <th>Nombre</th>
+          <th>Dirección</th>
+          <th>Télefono</th>
+          <tr v-for="dato in lista">
+            <td>{{dato.nombre}}</td>
+            <td>{{dato.direc}}</td>
+            <td>{{dato.tel}}</td>
+          </tr>
+        </table>
+      </div>
+    </script>
+
     <script src="vueJS/vue.min.js"></script>
     <script>
 
@@ -40,19 +70,8 @@
 
       Vue.component('mi-tabla',{
         props: ['lista'],
-        template:`
-        <div>
-          <table>
-            <th>Nombre</th>
-            <th>Dirección</th>
-            <th>Télefono</th>
-            <tr v-for="dato in lista">
-              <td>{{dato.nombre}}</td>
-              <td>{{dato.direc}}</td>
-              <td>{{dato.tel}}</td>
-            </tr>
-          </table>
-        </div>`
+        template: '#tabla2'
+        //template:'#tablaa'
       })
 
       const app = new Vue({
