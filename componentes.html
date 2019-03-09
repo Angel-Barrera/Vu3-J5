@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximun-scale=1, minimun-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Componentes</title>
+  </head>
+  <body>
+
+    <div id="app">
+      <mi-encabezado titulo="Curso" subtitulo="Desarrollo web con Vue.JS" :contenido="datos" alineacion="justify"></mi-encabezado>
+      <br>
+      <mi-tabla :lista="personas"></mi-tabla>
+    </div>
+    <hr>
+
+    <div id="app2">
+      <mi-encabezado titulo="instancia con app2" subtitulo="Desarrollo web con Vue.JS" contenido=" " alineacion=""></mi-encabezado>
+      <br>
+      <mi-tabla :lista="personas"></mi-tabla>
+      <br>
+      <mis-pelis :lista="peliculas"></mis-pelis>
+    </div>
+
+    <script src="vueJS/vue.min.js"></script>
+    <script>
+
+      Vue.component('mi-encabezado',{
+        props: ['titulo','subtitulo','contenido','alineacion'],
+        template:`
+        <div style="width:300px;">
+          <h1>{{titulo}}</h1>
+          <h4>{{subtitulo}}</h4>
+          <p :align="alineacion">{{contenido}}</p>
+        </div>`
+      })
+
+      Vue.component('mi-tabla',{
+        props: ['lista'],
+        template:`
+        <div>
+          <table>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Télefono</th>
+            <tr v-for="dato in lista">
+              <td>{{dato.nombre}}</td>
+              <td>{{dato.direc}}</td>
+              <td>{{dato.tel}}</td>
+            </tr>
+          </table>
+        </div>`
+      })
+
+      const app = new Vue({
+        el:'#app',
+        data:{
+          datos:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi sapiente eligendi fuga accusamus, iusto reprehenderit recusandae ex. Reiciendis nesciunt ea, sunt, veritatis cumque aut provident laudantium voluptatum nostrum laboriosam quod.',
+          personas:[
+            {nombre:'Pedro',direc:'Jardines',tel:324234},
+            {nombre:'Maria',direc:'Valles',tel:324324},
+            {nombre:'Cecilia',direc:'Perez',tel:456456}
+          ]
+        }
+      })
+
+      const misPelis ={
+        props: ['lista'],
+        template:`
+          <div>
+            <table>
+              <th>Título</th>
+              <th>Género</th>
+              <tr v-for="dato in lista">
+                <td>{{dato.titulo}}</td>
+                <td>{{dato.genero}}</td>
+              </tr>
+            </table>
+          </div>`
+      }
+
+      const app2 = new Vue({
+        el:'#app2',
+        data:{
+          datos:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi sapiente eligendi fuga accusamus, iusto reprehenderit recusandae ex. Reiciendis nesciunt ea, sunt, veritatis cumque aut provident laudantium voluptatum nostrum laboriosam quod.',
+          personas:[
+            {nombre:'Pedro',direc:'Jardines',tel:324234},
+            {nombre:'Maria',direc:'Valles',tel:324324},
+            {nombre:'Cecilia',direc:'Perez',tel:456456}
+          ],
+          peliculas:[
+            {titulo:'Piratas del caribe',genero:'Aventura'},
+            {titulo:'Rápido y furioso',genero:'Acción'},
+            {titulo:'El conjuro',genero:'Terror'}
+          ]
+        },
+        components:{
+          'mis-pelis':misPelis
+        }
+      })
+    </script>
+
+  </body>
+</html>
