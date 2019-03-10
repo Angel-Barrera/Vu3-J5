@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximun-scale=1, minimun-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Eventos personalziados</title>
+  </head>
+  <body>
+
+    <main id="app">
+      <boton @mi-evento="saluda2"></boton>
+    </main>
+
+    <template id="miBoton">
+      <button @click="saluda">click aqui</button>
+    </template>
+
+    <script src="vueJS/vue.min.js"></script>
+    <script>
+      Vue.component('boton',{
+        template: '#miBoton',
+        data(){
+          return{
+            dato: 'Hola, soy el dato de mi propio componente',
+            parametro: 'Hola como'
+          }
+        },
+        methods:{
+          saluda(){
+            alert(this.dato)
+            this.$emit('mi-evento',this.parametro)
+          }
+        }
+      })
+      const app = new Vue({
+        el:'#app',
+        data:{
+          datos: 'estás amigo'
+        },
+        methods:{
+          saluda2(parametro){
+            alert(parametro +' '+ this.datos)
+          }
+        }
+      })
+    </script>
+
+  </body>
+</html>
