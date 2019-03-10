@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximun-scale=1, minimun-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Métodos en componentes</title>
+  </head>
+  <body>
+
+    <main id="app">
+      <me-gusta></me-gusta>
+    </main>
+
+    <template id="meGusta">
+      <button @click="incremento">{{total}} Me gusta</button>
+    </template>
+
+    <script src="vueJS/vue.min.js"></script>
+    <script>
+      Vue.component('me-gusta',{
+        template: '#meGusta',
+        data: function(){
+          return{
+            total:0
+          }
+        },
+        methods:{
+          incremento:function(){
+            this.total += 1
+          }
+        }
+      })
+
+      const app = new Vue({
+        el:'#app'
+      })
+    </script>
+
+  </body>
+</html>
