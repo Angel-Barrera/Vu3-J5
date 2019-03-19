@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximun-scale=1, minimun-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Ciclo de vida</title>
+  </head>
+  <body>
+
+    <main id="app">
+      <h1>{{mensaje}}</h1>
+      <br>
+      <button @click="mensaje = 'Mensaje cambiado' ">Cambiar mensaje</button>
+      <button @click="destruir">Destruir instancia</button>
+    </main>
+
+    <script src="vueJS/vue.min.js"></script>
+    <script>
+      const app = new Vue({
+        el:'#app',
+        data:{
+          mensaje: 'Hola desde Vue'
+        },
+        beforeCreate(){ // Se ejecuta antes de que se carguen los eventos
+          alert('Ejecutando beforeCreated')
+        },
+        created(){ // se ejecuta de mnera asíncrona antes de que se cargue la plantilla
+          alert('Ejecutando create')
+        },
+        beforeMount(){ // se ejecuta antes de que se inicialice el DOM
+          alert('Ejecutando beforeMounted')
+        },
+        mounted(){
+          alert('Ejecuntando mounted')
+        },
+        beforeUpdate(){ // antes de que cambie alguna info en el DOM
+          alert('Ejecuntando beforeUpdate')
+        },
+        updated(){ // Cuando se haya realizado la actualización
+          alert('Ejecutando updated')
+        },
+        beforeDestroy(){ // Antes de destruir la instancia
+          alert('Ejecutando beforeDestroy')
+        },
+        destroyed(){ // Cuando se destryó la instacia
+          alert('Ejecutando destroyed')
+        },
+        methods:{
+          destruir(){
+            this.$destroy()
+          }
+        }
+      })
+    </script>
+
+  </body>
+</html>
